@@ -1,3 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .overlay {
+        @apply absolute;
+    }
+
+    /* Semua elemen setelah overlay */
+    .overlay * {
+        @apply transition-all duration-200;
+    }
+
+    /* Select semua Child pertama mau span, div, tag p segala macem */
+    .overlay.hoverable > * {
+        @apply opacity-0;
+    }
+
+    /* <div class="overlay hoverable"> maka opacity nya akan berubah jika diarahkan cursor */
+    .overlay.hoverable:hover > * {
+        @apply opacity-100;
+    }
+
+    .overlay .video {
+        @apply absolute transform flex items-center justify-center rounded-full bg-blue-200 bg-no-repeat bg-center;
+        background-image: url("../images/design/ico-play.svg");
+        top: 50%;
+        left: 50%;
+    }
+    .hero .hero-image,
+    .hero .hero-caption {
+        min-height: 90vh;
+    }
+    .hero .hero-cta {
+        @apply w-12 h-12;
+        transform: translateX(-75px) translateY(-50%);
+        background-size: 37.5%;
+    }
+
+    .card .card-shadow {
+        @apply transition duration-300 shadow-none h-full;
+    }
+    .card:hover .card-shadow {
+        @apply shadow-lg;
+    }
+}
+
+@screen md {
+    .hero .hero-image,
+    .hero .hero-caption {
+        min-height: auto;
+    }
+    .hero .hero-cta {
+        @apply w-20 h-20 -translate-x-1/2 -translate-y-1/2;
+        /* transform: translateX(-75px) translateY(75px); */
+        background-size: auto;
+    }
+}
+
+@layer utilities {
+    .stretched-link {
+        @apply absolute inset-0 z-10 cursor-pointer;
+    }
+    .grid {
+        grid-auto-flow: dense;
+        grid-auto-rows: minmax(180px, auto);
+    }
+}
+
+a.cart svg g circle.dot {
+    @apply hidden;
+}
+
+a.cart.cart-filled svg g circle.dot {
+    @apply block;
+}
