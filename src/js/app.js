@@ -4,3 +4,6 @@ import "./modal";
 import "./anchor-link-smooth";
 import "./carousel";
 import "./accordion";
+import "./slider";
+import "./shoppingCart";
+import "./shippingDetail";
